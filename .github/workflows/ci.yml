@@ -28,7 +28,12 @@ jobs:
         run: flutter test
 
       - name: Build Flutter Windows app
-        run: flutter build windows --output D:\flutterapp
+        run: flutter build windows
+
+      - name: Move build output to D drive
+        run: |
+          mkdir D:\output
+          move build\windows\runner\Release\* D:\flutterapp
 
       # - name: Upload Build Artifacts
       #   if: success()
