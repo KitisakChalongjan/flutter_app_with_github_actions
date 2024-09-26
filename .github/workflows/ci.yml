@@ -15,9 +15,9 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v4
 
-      - name: Setup Flutter SDK
-        uses: flutter-actions/setup-flutter@v3
-        
+      - name: Verify Flutter Installation
+        run: flutter --version
+
       - name: Install dependencies
         run: flutter pub get
 
@@ -27,13 +27,8 @@ jobs:
       - name: Run tests
         run: flutter test
 
-      - name: Run tests
-        run: flutter build windows
-
-      - name: Move build output to D drive
-        run: |
-          mkdir D:\output
-          move build\windows\runner\Release\* D:\flutterapp
+      - name: Build Flutter Windows app
+        run: flutter build windows --output D:\flutterapp
 
       # - name: Upload Build Artifacts
       #   if: success()
