@@ -15,14 +15,16 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v4
 
-      - name: Setup Flutter SDK
-        uses: flutter-actions/setup-flutter@v3
-        with:
-          channel: stable
-          flutter-version: 3.24.3
+      - name: Set up Flutter
+        run: |
+          git clone https://github.com/flutter/flutter.git --branch stable --depth 1
+          echo "::add-path::${{ github.workspace }}/flutter/bin"
 
       - name: Check Flutter Version
         run: flutter --version
+
+      - name: Flutter Doctor
+        run: flutter doctor
       
       - name: Install dependencies
         run: flutter pub get
@@ -33,7 +35,8 @@ jobs:
       - name: Run tests
         run: flutter test
 
-      - run: flutter build windows
+      - name: Run tests
+        run: flutter build windows
 
       - name: Move build output to D drive
         run: |
