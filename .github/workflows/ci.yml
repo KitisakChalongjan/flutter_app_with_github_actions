@@ -32,8 +32,9 @@ jobs:
 
       - name: Move build output to D drive
         run: |
-          rmdir D:\flutterapp
-          move build\windows\x64\runner\Release\* D:\flutterapp
+          if exist D:\flutterapp\* del /Q D:\flutterapp\*
+          move build\windows\x64\runner\Release\* D:\flutterapp\
+        shell: cmd
 
       # - name: Upload Build Artifacts
       #   if: success()
