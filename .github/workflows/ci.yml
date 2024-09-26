@@ -33,7 +33,7 @@ jobs:
       - name: Move build output to D drive
         run: |
           mkdir D:\output
-          move build\windows\runner\Release\* D:\flutterapp
+          move build\windows\x64\runner\Release\* D:\flutterapp
 
       # - name: Upload Build Artifacts
       #   if: success()
