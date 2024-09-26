@@ -32,11 +32,7 @@ jobs:
 
       - name: Move build output to D drive
         run: |
-          set targetPath=D:\MyApps\FlutterApp
-          if exist %targetPath% (
-            rmdir /S /Q %targetPath%
-          )
-          mkdir %targetPath%
+          rmdir D:\flutterapp
           move build\windows\x64\runner\Release\* D:\flutterapp
 
       # - name: Upload Build Artifacts
